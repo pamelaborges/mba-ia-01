@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     pdf_path: str
 
     model_config = SettingsConfigDict(
-        env_file=Path(__file__).resolve().parent.parent / ".env",
+        env_file=Path(__file__).parent.parent / ".env",
         env_file_encoding="utf-8",
     )
 
