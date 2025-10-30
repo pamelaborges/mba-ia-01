@@ -6,8 +6,10 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Settings(BaseSettings):
     openai_api_key: str
     openai_embedding_model: str
+    openai_model: str
     google_api_key: str
     google_embedding_model: str
+    google_model: str
     database_url: str
     pg_vector_collection_name: str
     pdf_path: str

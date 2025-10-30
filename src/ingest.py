@@ -4,8 +4,10 @@ from pathlib import Path
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
-from langchain_postgres import PGVector
 from langchain_openai import OpenAIEmbeddings
+
+from store import Store
+
 
 PDF_PATH = os.getenv("PDF_PATH")
 
@@ -17,13 +19,7 @@ def ingest_pdf():
 
     embeddings = OpenAIEmbeddings(model=settings.openai_embedding_model, api_key=settings.openai_api_key)
 
-    store = PGVector(
-        embeddings=embeddings,
-        collection_name=settings.pg_vector_collection_name,
-        connection=settings.database_url,
-        use_jsonb=True,
-    )
-
+    store = Store(embeddings)
     store.add_documents(documents=enriched, ids=ids)
     
 def load() -> list[Document]:
