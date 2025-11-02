@@ -16,5 +16,5 @@ class Store:
         self.store.add_documents(documents=documents, ids=ids)
         
     def search(self, query: str)-> list:
-        return self.store.similarity_search_by_vector(query, k=10)
+        return self.store.similarity_search_with_score(query, k=10)
 

@@ -8,9 +8,6 @@ from langchain_openai import OpenAIEmbeddings
 
 from store import Store
 
-
-PDF_PATH = os.getenv("PDF_PATH")
-
 def ingest_pdf():
     documents = load() # le o pdf
     chunks = split(documents) # separa
@@ -24,7 +21,7 @@ def ingest_pdf():
     
 def load() -> list[Document]:
     current_dir = Path(__file__).parent.parent
-    pdf_path = current_dir / "relatorio_bairros.pdf"
+    pdf_path = current_dir / settings.pdf_path
     return PyPDFLoader(str(pdf_path)).load()  
 
 def enrich_metadata(chunks: list[Document]) -> list[Document]:

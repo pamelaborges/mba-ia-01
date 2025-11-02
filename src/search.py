@@ -28,10 +28,10 @@ class BaseSearchChain():
     def _build_chain(self):
         @chain
         def search_database(question: str) -> dict:
-            question_vector = self.embeddings.embed_query(question)
-            database_results = self.store.search(question_vector)
+           # question_vector = self.embeddings.embed_query(question)
+            database_results = self.store.search(question)
             content = "\n\n".join(
-                doc.page_content.strip() for doc in database_results if doc.page_content
+                doc.page_content.strip() for _, (doc, _) in enumerate(database_results, start=1)
             )
             return {"context": content, "question": question}
 

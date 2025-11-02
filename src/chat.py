@@ -8,7 +8,7 @@ PROVIDERS = {
 def main():
     
     print("Bem vindo ao chatbot!")
-    llm = input("Qual llm deseja utilizar? 1: OpenAI | 2: Gemini").strip()
+    llm = input("Qual llm deseja utilizar? \n1: OpenAI \n2: Gemini \n").strip()
     
     provider = PROVIDERS.get(llm)
     if provider is None:
