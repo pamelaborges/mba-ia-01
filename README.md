@@ -67,6 +67,7 @@ Este diretório implementa um chatbot em linha de comando que responde perguntas
    ```
    - Selecione o provedor: `1` para OpenAI, `2` para Gemini.
    - Faça perguntas sobre o relatório; as respostas seguem rigidamente o conteúdo indexado.
+   - Exemplo de Perguntas: Qual bairro faturou menos? Quais são os 3 bairros responsaveis por 80% do faturamento da empresa?
 
 ## Fluxo interno
 1. `chat.py` recebe perguntas do usuário, escolhe a chain adequada e delega a resposta.
