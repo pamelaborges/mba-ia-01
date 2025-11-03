@@ -29,7 +29,7 @@ Este diretório implementa um chatbot em linha de comando que responde perguntas
    ```bash
    cd desafios/01
    python -m venv .venv
-   source .venv/bin/activate  # Windows: .venv\Scripts\activate
+   source .venv/bin/activate
    pip install -r requirements.txt
    ```
 
@@ -68,15 +68,3 @@ Este diretório implementa um chatbot em linha de comando que responde perguntas
    - Selecione o provedor: `1` para OpenAI, `2` para Gemini.
    - Faça perguntas sobre o relatório; as respostas seguem rigidamente o conteúdo indexado.
    - Exemplo de Perguntas: Qual bairro faturou menos? Quais são os 3 bairros responsaveis por 80% do faturamento da empresa?
-
-## Fluxo interno
-1. `chat.py` recebe perguntas do usuário, escolhe a chain adequada e delega a resposta.
-2. `search.py` busca passagens relevantes no vetor store (`PGVector.similarity_search_with_score`), monta o contexto e chama o LLM com o prompt de segurança.
-3. `prompts.py` garante que o modelo responda apenas com base no contexto recuperado.
-4. `store.py` encapsula a conexão com o banco vetorial.
-5. `ingest.py` cuida do pré-processamento e armazenamento dos documentos.
-
-## Dicas
-- Atualize `PDF_PATH` se quiser usar outro documento como base de conhecimento.
-- Para usar apenas um provedor, basta preencher as variáveis relacionadas a ele.
-- Mantenha os contêineres sob controle (`docker compose down`) ao finalizar os testes para liberar recursos.
